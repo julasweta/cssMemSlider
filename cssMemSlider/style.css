@@ -29,7 +29,16 @@ overflow: hidden;
 .btn{
   width: 50px;
   height: 50px;
- background-color: transparent;
+  background-color: blue;
   border: 3px solid rgb(93, 110, 187);
   border-radius: 50%;
+}
+.btn:hover{
+background-color: transparent;
+}
+.btn:active{
+  background-color: coral;
+}
+btn:visited{
+  background-color: cyan;
 }

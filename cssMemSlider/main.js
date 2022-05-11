@@ -1,5 +1,3 @@
-
-
 var requestURL = './img.json';
 var request = new XMLHttpRequest();
 request.open('GET', requestURL);
@@ -17,29 +15,30 @@ let sliderTrack = document.querySelector('.slider__track');
 let sliderTrackText = document.querySelector('.slider__trackText');
 let buttons = document.querySelector('.buttons');
 
-  function slider(data) {
-  for (let i = 0; i < data.length; i++){
+function slider(data) {
+  for (let i = 0; i < (data.length); i++) {
     let itemDiv = document.createElement('div');
     itemDiv.className = 'item';
     sliderTrack.append(itemDiv);
 
-     let itemDivText = document.createElement('div');
+    let itemDivText = document.createElement('div');
     itemDivText.className = 'itemText';
     itemDivText.textContent = data[i].text
-     sliderTrackText.append(itemDivText);
+    sliderTrackText.append(itemDivText);
 
-     let a = document.createElement('a');
-     a.className = "link";
-     a.href = data[i].img;
-     itemDiv.append(a);
+    let a = document.createElement('a');
+    a.className = "link";
+    a.href = data[i].img;
+    itemDiv.append(a);
 
     let img = new Image();
     img.src = data[i].img;
     img.alt = 'pets'
     a.append(img);
 
-    let button = document.createElement('div');
+    let button = document.createElement('a');
     button.className = ('btn');
+    button.href = '#'+ i;
     button.setAttribute('data', i)
     buttons.append(button)
 
@@ -49,7 +48,7 @@ let buttons = document.querySelector('.buttons');
 
 
 
- /* Carousel Pets  */
+/* Carousel Pets  */
 
 window.onload = function () {
 
@@ -61,10 +60,10 @@ window.onload = function () {
   const trackText = document.querySelector('.slider__trackText');
   const items = document.querySelectorAll('.item');
   const itemsText = document.querySelectorAll('.itemText');
-  const btn = document.querySelector('.btn');
+  const btns = document.querySelectorAll('.btn');
   const itemsCount = items.length;
   const itemWidth = container.clientWidth / slidesToShow;
-  const movePosition = slidesToScroll * itemWidth;
+  const movePosition = slidesToScroll * itemWidth;  //640
 
 
 
@@ -72,30 +71,9 @@ window.onload = function () {
     item.style.minWidth = `${itemWidth}px`;
   })
 
-   itemsText.forEach((itemText) => {
-     itemText.style.minWidth = `${itemWidth}px`;
-   })
-
- btn.bind('click', function () {
-   alert(this.name);
- });
-
-
-  btn_left.addEventListener('click', () => {
-    const itemsLeft = Math.abs(position) / itemWidth
-    position += itemsLeft >= slidesToScroll ? movePosition : (itemsLeft * itemWidth);
-    setPosition();
-    checkBtns();
+  itemsText.forEach((itemText) => {
+    itemText.style.minWidth = `${itemWidth}px`;
   })
-
-  btn_right.addEventListener('click', () => {
-    let itemsRight = itemsCount - (Math.abs(position) + slidesToShow * itemWidth) / itemWidth;
-    position -= itemsRight >= slidesToScroll ? movePosition : (itemsRight * itemWidth);
-    setPosition();
-    checkBtns();
-  })
-
-
 
   const setPosition = () => {
     track.style.transform = `translateX(${position}px)`;
@@ -103,20 +81,26 @@ window.onload = function () {
   }
 
 
+  btns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      let btn_data = e.target
+      let data = btn_data.getAttribute('data')
+      position = (data * (-itemWidth));
+      setPosition();
+
+    })
 
 
-  const checkBtns = () => {
-    if (position === 0) {
-      btn_left.classList.add('disabled')
-    } else {
-      btn_left.classList.remove('disabled')
-    }
 
-    if (position <= -((itemsCount - slidesToShow) * itemWidth)) {
-      btn_right.classList.add('disabled')
-    } else {
-      btn_right.classList.remove('disabled')
-    }
-  }
-  checkBtns();
+  })
+
+
+
+
+
+
+
+
+
+
 }
