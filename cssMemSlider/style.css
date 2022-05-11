@@ -1,0 +1,35 @@
+body{
+  background-color: rgb(53, 58, 63);
+}
+
+.slider__container,
+.slider__containerText {
+display: flex;
+width: 640px;
+margin-left: auto;
+margin-right: auto;
+overflow: hidden;
+}
+
+.slider__track,
+.slider__trackText {
+  display: flex;
+  float: left;
+}
+.itemText{
+  color: white;
+  font-size: 2rem;
+}
+.buttons{
+  display: flex;
+  justify-content: center;
+  padding-top: 25px;
+}
+
+.btn{
+  width: 50px;
+  height: 50px;
+ background-color: transparent;
+  border: 3px solid rgb(93, 110, 187);
+  border-radius: 50%;
+}
