@@ -1,0 +1,125 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.12,
+* Autoprefixer: v10.4.4
+* Browsers: last 4 version
+*/
+* {
+  transition: all 0.4s ease;
+}
+
+body {
+  background-color: rgb(53, 58, 63);
+  font-size: 16px;
+}
+
+.slider__container,
+.slider__containerText {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 90vh;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  text-align: center;
+}
+
+.slider__track,
+.slider__trackText {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  float: left;
+}
+
+
+
+img {
+  width: 100%;
+height: max-content;
+}
+
+.slider__trackText {
+  color: white;
+  font-size: 180%;
+}
+
+.buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: space-evenly;
+  padding-top: 25px;
+  width: 30%;
+  margin: 0 auto;
+}
+
+.btn {
+  min-width: 30px;
+  min-height: 30px;
+  background-color: blue;
+  border: 3px solid rgb(93, 110, 187);
+  border-radius: 50%;
+}
+
+.btn:hover {
+  background-color: transparent;
+}
+
+.btn:active {
+  background-color: yellow;
+}
+
+btn:before {
+  background-color: cyan;
+}
+
+.active {
+  background-color: yellow;
+}
+
+
+.activetext {
+  -webkit-animation: textcolor 3s ease;
+  animation: textcolor 3s ease;
+}
+
+
+
+@-webkit-keyframes textcolor {
+  0% {
+    color: blue;
+  }
+
+  100% {
+    color: yellow;
+  }
+
+}
+
+
+
+@keyframes textcolor {
+  0% {
+    color: blue;
+  }
+
+  100% {
+    color: yellow;
+  }
+
+}
+
+
+
+/* 0- 576px */
+@media screen and (max-width: 576px) {
+
+  .slider__container,
+  .slider__containerText {
+    width: 50vh;
+  }
+}
